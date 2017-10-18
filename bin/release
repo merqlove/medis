@@ -17,9 +17,9 @@ git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
 cd ../.. &&
-conventional-changelog -i CHANGELOG.md -s -p angular &&
-git add CHANGELOG.md &&
-git commit -m"docs(CHANGELOG): $version" &&
+# conventional-changelog -i CHANGELOG.md -s -p angular &&
+# git add CHANGELOG.md &&
+# git commit -m"docs(CHANGELOG): $version" &&
 git tag -a -m "chore(release): %s" $version &&
 git push --follow-tags &&
 node "bin/conventional-github-releaser" &&
