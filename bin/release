@@ -16,6 +16,7 @@ INFO="$APP_PATH/Contents/Info.plist"
 git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
+cd ../.. &&
 conventional-changelog -i CHANGELOG.md -s -p angular &&
 git add CHANGELOG.md &&
 git commit -m"docs(CHANGELOG): $version" &&
