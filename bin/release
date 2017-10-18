@@ -5,6 +5,8 @@
 APP_NAME="Medis"
 OUT_PATH="out/$APP_NAME-darwin-x64"
 
+echo "$OUT_PATH"
+
 cd "$OUT_PATH"
 APP_PATH="$APP_NAME.app"
 FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
