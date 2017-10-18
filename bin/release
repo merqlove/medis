@@ -4,18 +4,15 @@
 
 APP_NAME="Medis"
 OUT_PATH="out/$APP_NAME-darwin-x64"
-
-echo "$OUT_PATH"
+version=`cat package.json | jq '.version' | sed -e 's/"//'`
 
 cd "$OUT_PATH"
 
 APP_PATH="$APP_NAME.app"
 FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
 INFO="$APP_PATH/Contents/Info.plist"
-ls "$INFO"
 
 [ -z "$CONVENTIONAL_GITHUB_RELEASER_TOKEN" ] && echo "Need to set Token" && exit 1;
-version=`cat package.json | jq '.version' | sed -e 's/"//'` &&
 git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
