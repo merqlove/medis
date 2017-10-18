@@ -8,6 +8,7 @@ version=`cat package.json | jq '.version' | sed -e 's/"//' | sed -e 's/"//'`
 
 cd "$OUT_PATH"
 
+echo "mv $OUT_PATH/medis.zip $OUT_PATH/$TARGET"
 APP_PATH="$APP_NAME.app"
 FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
 INFO="$APP_PATH/Contents/Info.plist"
