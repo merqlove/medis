@@ -4,7 +4,7 @@
 
 APP_NAME="Medis"
 OUT_PATH="out/$APP_NAME-darwin-x64"
-version=`cat package.json | jq '.version' | sed -e 's/"//'`
+version=`cat package.json | jq '.version' | sed -e 's/"//' | sed -e 's/"//'`
 
 cd "$OUT_PATH"
 
