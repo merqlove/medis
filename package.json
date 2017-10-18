@@ -12,7 +12,7 @@
     "watch": "npm run build -- --watch",
     "electron": "electron .",
     "lint": "xo client/**/*.{js,jsx}",
-    "pack": "NODE_ENV=production npm run build -- -p --config webpack.production.config.js && node bin/pack.js",
+    "pack": "NODE_ENV=production npm run build -- -p --config webpack.production.config.js && node bin/compack.js",
     "release": "NODE_ENV=production ./bin/release"
   },
   "xo": {
