@@ -18,7 +18,7 @@ git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
 cd ../.. &&
-git tag -a -m "chore(release): %s" $version &&
+git tag -a -f -m "chore(release): %s" $version &&
 git push --follow-tags &&
 node "bin/conventional-github-releaser" &&
 echo "mv $OUT_PATH/medis.zip $OUT_PATH/$TARGET" &&
