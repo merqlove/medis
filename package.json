@@ -13,7 +13,7 @@
     "electron": "electron .",
     "lint": "xo client/**/*.{js,jsx}",
     "pack": "NODE_ENV=production npm run build -- -p --config webpack.production.config.js && node bin/compack.js",
-    "release": "NODE_ENV=production ./bin/release"
+    "release": "NODE_ENV=production ./bin/simple-release"
   },
   "xo": {
     "extends": "xo-react/space",

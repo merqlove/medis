@@ -2,23 +2,26 @@
 
 . "bin/deploy"
 
-APP_PATH="Medis.app"
+APP_NAME="Medis"
+OUT_PATH="out/$APP_NAME-darwin-x64"
+version=`cat package.json | jq '.version' | sed -e 's/"//' | sed -e 's/"//'`
+
+cd "$OUT_PATH"
+
+APP_PATH="$APP_NAME.app"
 FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
 INFO="$APP_PATH/Contents/Info.plist"
+TARGET="medis-v$version-mac-x64.zip"
 
 [ -z "$CONVENTIONAL_GITHUB_RELEASER_TOKEN" ] && echo "Need to set Token" && exit 1;
-version=`cat package.json | json version` &&
 git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
-conventional-changelog -i CHANGELOG.md -s -p angular &&
-git add CHANGELOG.md &&
-git commit -m"docs(CHANGELOG): $version" &&
-git tag -a -m "chore(release): %s" $version &&
+cd ../.. &&
+git tag -a -f -m "chore(release): %s" $version &&
 git push --follow-tags &&
 node "bin/conventional-github-releaser" &&
-TARGET="medis-v$version-mac-x64.zip" &&
-mv "medis.zip" $TARGET &&
+mv "$OUT_PATH/medis.zip" "$OUT_PATH/$TARGET" &&
 echo "**************************************************************************"
-echo "Upload $TARGET to the https://github.com/luin/medis/releases/edit/v$version"
+echo "Upload $OUT_PATH/$TARGET to the https://github.com/merqlove/medis/releases/edit/v$version"
 echo "**************************************************************************"
