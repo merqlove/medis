@@ -14,7 +14,7 @@ INFO="$APP_PATH/Contents/Info.plist"
 TARGET="medis-v$version-mac-x64.zip"
 
 [ -z "$CONVENTIONAL_GITHUB_RELEASER_TOKEN" ] && echo "Need to set Token" && exit 1;
-git commit -am "chore(release): %s" &&
+git commit -qam "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
 cd ../.. &&
