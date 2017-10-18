@@ -18,13 +18,10 @@ git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
 cd ../.. &&
-# conventional-changelog -i CHANGELOG.md -s -p angular &&
-# git add CHANGELOG.md &&
-# git commit -m"docs(CHANGELOG): $version" &&
 git tag -a -m "chore(release): %s" $version &&
 git push --follow-tags &&
 node "bin/conventional-github-releaser" &&
-mv "medis.zip" "$OUT_PATH/$TARGET" &&
+mv "$OUT_PATH/medis.zip" "$OUT_PATH/$TARGET" &&
 echo "**************************************************************************"
 echo "Upload $OUT_PATH/$TARGET to the https://github.com/merqlove/medis/releases/edit/v$version"
 echo "**************************************************************************"
