@@ -7,7 +7,7 @@ FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
 INFO="$APP_PATH/Contents/Info.plist"
 
 [ -z "$CONVENTIONAL_GITHUB_RELEASER_TOKEN" ] && echo "Need to set Token" && exit 1;
-version=`cat package.json | json version` &&
+version=`cat package.json |  jq '.version'` &&
 git commit -am "chore(release): %s" &&
 perl -pi -e "s/#version#/$version/g" "$INFO" &&
 zip --symlinks -r9 "medis.zip" "$APP_PATH" &&
@@ -20,5 +20,5 @@ node "bin/conventional-github-releaser" &&
 TARGET="medis-v$version-mac-x64.zip" &&
 mv "medis.zip" $TARGET &&
 echo "**************************************************************************"
-echo "Upload $TARGET to the https://github.com/luin/medis/releases/edit/v$version"
+echo "Upload $TARGET to the https://github.com/merqlove/medis/releases/edit/v$version"
 echo "**************************************************************************"
