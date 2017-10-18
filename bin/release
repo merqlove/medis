@@ -9,11 +9,10 @@ echo "$OUT_PATH"
 
 cd "$OUT_PATH"
 
-ls -all
 APP_PATH="$APP_NAME.app"
 FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"
 INFO="$APP_PATH/Contents/Info.plist"
-echo "$INFO"
+ls "$INFO"
 
 [ -z "$CONVENTIONAL_GITHUB_RELEASER_TOKEN" ] && echo "Need to set Token" && exit 1;
 version=`cat package.json | jq '.version' | sed -e 's/"//'` &&
