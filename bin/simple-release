@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "bin/deploy"
+# . "bin/deploy"
 
 APP_NAME="Medis"
 OUT_PATH="out/$APP_NAME-darwin-x64"
