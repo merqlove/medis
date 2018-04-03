@@ -1,5 +1,22 @@
 # Medis
 
+This is fork with unsigned builds & branch with unsigned builds builder.  
+Here is no support, if you want signed builds with supporting [go](http://getmedis.com)
+- Branch: [free](../../tree/free)
+- Builds: [releases](../../releases)
+
+## Build Process
+
+Prerequisites: 
+- install [NodeJS](https://nodejs.org)
+- Xcode CLI tools
+
+```bash
+npm install
+npm run pack
+npm run release # if you want
+```
+
 ![Medis](http://getmedis.com/screen.png)
 
 Medis is a beautiful, easy-to-use Redis management application built on the modern web with [Electron](https://github.com/atom/electron), [React](https://facebook.github.io/react/), and [Redux](https://github.com/rackt/redux). It's powered by many awesome Node.js modules, especially [ioredis](https://github.com/luin/ioredis) and [ssh2](https://github.com/mscdex/ssh2).
